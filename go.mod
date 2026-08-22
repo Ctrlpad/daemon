@@ -4,6 +4,7 @@ go 1.26.3
 
 require (
 	github.com/charmbracelet/log v1.0.0
+	gopkg.in/ini.v1 v1.67.3
 	tinygo.org/x/bluetooth v0.15.0
 )
 
@@ -32,5 +33,4 @@ require (
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	golang.org/x/exp v0.0.0-20241204233417-43b7b7cde48d // indirect
 	golang.org/x/sys v0.30.0 // indirect
-	gopkg.in/ini.v1 v1.67.3 // indirect
 )
