@@ -19,7 +19,7 @@
     {
       packages = forAllSystems (pkgs: rec {
         ctrlpad-daemon = pkgs.callPackage ./nix/package.nix {
-          version = "0.0.5";
+          version = "0.0.6";
           commit = self.rev or self.dirtyRev or "none";
           date = self.lastModifiedDate;
         };
@@ -27,7 +27,7 @@
       });
 
       overlays.default = final: _prev: {
-        ctrlpad-daemon = final.callPackage ./nix/package.nix { version = "0.0.5"; };
+        ctrlpad-daemon = final.callPackage ./nix/package.nix { version = "0.0.6"; };
       };
 
       nixosModules = rec {
