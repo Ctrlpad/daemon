@@ -7,7 +7,7 @@ import (
 )
 
 func Run() int {
-	device, err := ble.ScanAndConnectToCtrlPad()
+	device, err := ble.ScanAndConnectToCtrlpad()
 	if err != nil {
 		log.Error("Connection", "err", err)
 		return 1

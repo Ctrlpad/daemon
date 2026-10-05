@@ -11,14 +11,14 @@ let
 in
 {
   options.services.ctrlpad-daemon = {
-    enable = lib.mkEnableOption "the CtrlPad daemon";
+    enable = lib.mkEnableOption "the Ctrlpad daemon";
   };
 
   config = lib.mkIf cfg.enable {
     hardware.bluetooth.enable = lib.mkDefault true;
 
     systemd.user.services.ctrlpad-daemon = {
-      description = "CtrlPad Daemon";
+      description = "Ctrlpad Daemon";
       documentation = [ "https://github.com/ctrlpad/daemon" ];
       wantedBy = [ "graphical-session.target" ];
       partOf = [ "graphical-session.target" ];

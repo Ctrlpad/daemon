@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-OWNER="ctrlPad"
+OWNER="ctrlpad"
 REPO="daemon"
 BINARY="ctrlpad-daemon"
 PROJECT_NAME="ctrlpad-daemon"

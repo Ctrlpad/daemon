@@ -38,7 +38,7 @@ buildGoModule {
   ];
 
   meta = {
-    description = "Background service that listens for and executes CtrlPad button actions";
+    description = "Background service that listens for and executes Ctrlpad button actions";
     homepage = "https://github.com/ctrlpad/daemon";
     license = lib.licenses.mit;
     mainProgram = "ctrlpad-daemon";

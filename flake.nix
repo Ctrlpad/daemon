@@ -1,5 +1,5 @@
 {
-  description = "CtrlPad daemon - listens for CtrlPad button actions over BLE and executes them";
+  description = "Ctrlpad daemon - listens for Ctrlpad button actions over BLE and executes them";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

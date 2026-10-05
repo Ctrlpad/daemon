@@ -6,7 +6,7 @@ import (
 	"tinygo.org/x/bluetooth"
 )
 
-func ScanAndConnectToCtrlPad() (*bluetooth.Device, error) {
+func ScanAndConnectToCtrlpad() (*bluetooth.Device, error) {
 	err := Adapter.Enable()
 	if err != nil {
 		log.Error("Adapter", "err", err)
@@ -17,7 +17,7 @@ func ScanAndConnectToCtrlPad() (*bluetooth.Device, error) {
 	log.Info("Scanning for BLE device")
 	err = Adapter.Scan(func(adapter *bluetooth.Adapter, result bluetooth.ScanResult) {
 		log.Info("Found device", "Device Name", result.LocalName(), "RSSI", result.RSSI, "Address", result.Address.String())
-		if result.LocalName() == "ctrlPad_BLE" {
+		if result.LocalName() == "ctrlpad_BLE" {
 			adapter.StopScan()
 			deviceChan <- result
 		}
@@ -37,14 +37,14 @@ func ScanAndConnectToCtrlPad() (*bluetooth.Device, error) {
 }
 
 func SetupNotifications(device *bluetooth.Device) (chan string, error) {
-	srvcs, err := device.DiscoverServices([]bluetooth.UUID{CtrlPadServiceUUID})
+	srvcs, err := device.DiscoverServices([]bluetooth.UUID{CtrlpadServiceUUID})
 	if err != nil {
 		return nil, err
 	}
 	srvc := srvcs[0]
 	log.Info("Found service", "UUID", srvc.UUID().String())
 
-	chars, err := srvc.DiscoverCharacteristics([]bluetooth.UUID{CtrlPadCharacteristicUUID})
+	chars, err := srvc.DiscoverCharacteristics([]bluetooth.UUID{CtrlpadCharacteristicUUID})
 	if err != nil {
 		return nil, err
 	}

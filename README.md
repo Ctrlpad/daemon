@@ -1,8 +1,8 @@
 # Ctrlpad daemon
 
-![GitHub stars](https://img.shields.io/github/stars/ctrlPad/daemon?style=for-the-badge&logo=github) ![GitHub issues](https://img.shields.io/github/issues/ctrlPad/daemon?style=for-the-badge&logo=github) ![Last commit](https://img.shields.io/github/last-commit/ctrlPad/daemon?style=for-the-badge&logo=github)
+![GitHub stars](https://img.shields.io/github/stars/ctrlpad/daemon?style=for-the-badge&logo=github) ![GitHub issues](https://img.shields.io/github/issues/ctrlpad/daemon?style=for-the-badge&logo=github) ![Last commit](https://img.shields.io/github/last-commit/ctrlpad/daemon?style=for-the-badge&logo=github)
 
-The daemon is the background service behind CtrlPad. It scans for the `ctrlPad_BLE` device, connects to it over Bluetooth Low Energy, subscribes to the button characteristic and executes the action that comes with every button press.
+The daemon is the background service behind Ctrlpad. It scans for the `Ctrlpad_BLE` device, connects to it over Bluetooth Low Energy, subscribes to the button characteristic and executes the action that comes with every button press.
 
 > [!WARNING]
 > This project is still in development. Content, structure and setup can change at any time. The daemon currently supports Linux only - Windows and macOS are not supported at this time.
@@ -24,14 +24,14 @@ A working Bluetooth stack (BlueZ, running `bluetoothd`) is needed to talk to the
 ## Getting Started
 
 ```sh
-git clone https://github.com/CtrlPad/daemon.git
+git clone https://github.com/Ctrlpad/daemon.git
 cd daemon
 
 devenv shell
 go run .
 ```
 
-The daemon starts scanning immediately and logs every device it sees until it finds `ctrlPad_BLE`.
+The daemon starts scanning immediately and logs every device it sees until it finds `Ctrlpad_BLE`.
 
 For a watch-and-restart loop there is an [air](https://github.com/air-verse/air) config (`.air.toml`, builds to `./tmp/main`):
 
