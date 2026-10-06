@@ -30,7 +30,7 @@ in
       after = [ "graphical-session.target" ];
 
       serviceConfig = {
-        ExecStart = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.ctrlpad-daemon} -device ${cfg.device};
+        ExecStart = "${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.ctrlpad-daemon} -device ${cfg.device}";
         Restart = "on-failure";
         RestartSec = 5;
         Type = "simple";
