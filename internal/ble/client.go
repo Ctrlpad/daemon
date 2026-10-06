@@ -6,33 +6,32 @@ import (
 	"tinygo.org/x/bluetooth"
 )
 
-func ScanAndConnectToCtrlpad() (*bluetooth.Device, error) {
+func ConnectToCtrlpad(targetDevice string) (*bluetooth.Device, error) {
 	err := Adapter.Enable()
 	if err != nil {
 		log.Error("Adapter", "err", err)
 	}
 	log.Info("Enabled Adapter")
-	deviceChan := make(chan bluetooth.ScanResult, 1)
 
-	log.Info("Scanning for BLE device")
-	err = Adapter.Scan(func(adapter *bluetooth.Adapter, result bluetooth.ScanResult) {
-		log.Info("Found device", "Device Name", result.LocalName(), "RSSI", result.RSSI, "Address", result.Address.String())
-		if result.LocalName() == "ctrlpad_BLE" {
-			adapter.StopScan()
-			deviceChan <- result
-		}
-	})
+	mac, err := bluetooth.ParseMAC(targetDevice)
 	if err != nil {
+		log.Error("Parsing mac", "err", err)
 		return nil, err
 	}
 
-	foundDevice := <-deviceChan
+	addr := bluetooth.Address{
+		MACAddress: bluetooth.MACAddress{
+			MAC: mac,
+		},
+	}
 
-	device, err := Adapter.Connect(foundDevice.Address, bluetooth.ConnectionParams{})
+	log.Info("Connecting to device", "Address", addr)
+	device, err := Adapter.Connect(addr, bluetooth.ConnectionParams{})
 	if err != nil {
 		return nil, err
 	}
-	log.Infof("Connected to %s", foundDevice.LocalName())
+	log.Infof("Connected to %s", targetDevice)
+
 	return &device, nil
 }
 
