@@ -9,13 +9,12 @@ import (
 func ConnectToCtrlpad(targetDevice string) (*bluetooth.Device, error) {
 	err := Adapter.Enable()
 	if err != nil {
-		log.Error("Adapter", "err", err)
+		return nil, err
 	}
 	log.Info("Enabled Adapter")
 
 	mac, err := bluetooth.ParseMAC(targetDevice)
 	if err != nil {
-		log.Error("Parsing mac", "err", err)
 		return nil, err
 	}
 

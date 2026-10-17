@@ -3,9 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/charmbracelet/log"
 	"github.com/ctrlpad/daemon/cmd"
-	"github.com/ctrlpad/daemon/internal/info"
 )
 
 var (
@@ -15,11 +13,16 @@ var (
 )
 
 func main() {
-	log.SetDefault(log.NewWithOptions(os.Stderr, log.Options{
-		ReportTimestamp: false,
-		ReportCaller:    true,
-	}))
-	info.SetVersionInfo(version, commit, date)
+	os.Exit(run())
+}
 
-	os.Exit(cmd.Run())
+func run() int {
+	cmd.Init(version, commit, date)
+
+	err := cmd.Execute()
+	if err != nil {
+		return 1
+	}
+
+	return 0
 }
